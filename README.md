@@ -1,10 +1,11 @@
 # TODOv1
 
-- Npm package:
+- Npm packages:
 
     express
     body-parser
     nodemon
+    ejs
 
 - Unix command terminal: 
 
