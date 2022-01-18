@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-var items = [];
+let items = [];
+let workItems = [];
 
 app.set('view engine', 'ejs');
 
@@ -13,29 +14,46 @@ app.use(express.static("public"));
 //App.js : server
 //Send message to the browser when user accesses homepage with route "/"
 app.get("/", function(req,res){
-  var today = new Date();
-  var currentDay = today.getDay();
+  let today = new Date();
+  let currentDay = today.getDay();
 
-  var options = {
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long"
   };
 
-  var day = today.toLocaleDateString("en-US", options);
+  let day = today.toLocaleDateString("en-US", options);
 
   res.render("list", {
-    kindOfDay: day,
+    listTitle: day,
     newListItems: items
   });
 
 });
 
-app.post("/", function(req, res){
-  var item = req.body.newItem;
-  items.push(item);
-  res.redirect("/");
+//Create new template at route "/work"
+//Get input item and rerender frontend to show input data
+app.get("/work",function(req,res){
+  res.render("list",{listTitle: "Work List", newListItems: workItems});
 });
+
+app.post("/", function(req,res){
+  let item = req.body.newItem;
+  if(req.body.list === "Work"){
+      workItems.push(item);
+      res.redirect("/work");
+  }
+  else {
+    items.push(item);
+    res.redirect("/");
+  }
+
+
+
+
+});
+
 
 app.listen(3000, function(){
   console.log("Server started on port 3000");
