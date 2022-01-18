@@ -14,6 +14,9 @@
 - Run server: 
     nodemon app.js
     
-- Routes: localhost:3000/, localhost:3000//work, localhost:3000//about
+- Routes: 
+    localhost:3000/
+    localhost:3000/work 
+    localhost:3000/about
 
 
