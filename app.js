@@ -8,6 +8,7 @@ var items = [];
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
 //App.js : server
 //Send message to the browser when user accesses homepage with route "/"

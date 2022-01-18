@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>To Do List-v1</title>
-  </head>
-  <body>
-  <h1><%= kindOfDay %></h1>
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do List-v1</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+  <div class="box" id="heading">
+    <h1><%= kindOfDay %></h1>
+  </div>
 
 
-  <ul>
-      <%# variable to show after input %>
-      <% for(var i=0; i<newListItems.length; i++){ %>
-        <li> <%= newListItems[i] %> </li>
-      <% } %>
-  </ul>
+  <div class="box">
+    <%# variable to show after input %>
+    <% for(var i=0; i<newListItems.length; i++){ %>
+    <div class="item">
+      <input type="checkbox">
+      <p> <%= newListItems[i] %>
+      <p>
+    </div>
+    <% } %>
 
-<%# form makes a post request to the home route "/" %>
-  <form class="" action="/" method="post">
 
-    <%# post the value of the text input with name of "newItem" %>
-    <input type="text" name="newItem" />
-    <button type="submit" name="button">Add</button>
+    <%# form makes a post request to the home route "/" %>
+    <form class="item" action="/" method="post">
+      <%# post the value of the text input with name of "newItem" %>
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+      <button type="submit" name="button">+</button>
+    </form>
+  </div>
+</body>
 
-  </form>
-  </body>
 </html>
