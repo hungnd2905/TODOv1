@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List-v1</title>
+  </head>
+  <body>
+  <h1><%= kindOfDay %></h1>
+
+
+  <ul>
+      <%# variable to show after input %>
+      <% for(var i=0; i<newListItems.length; i++){ %>
+        <li> <%= newListItems[i] %> </li>
+      <% } %>
+  </ul>
+
+<%# form makes a post request to the home route "/" %>
+  <form class="" action="/" method="post">
+
+    <%# post the value of the text input with name of "newItem" %>
+    <input type="text" name="newItem" />
+    <button type="submit" name="button">Add</button>
+
+  </form>
+  </body>
+</html>
