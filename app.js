@@ -1,6 +1,10 @@
+//jshint esversion:6
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
+//get data:day from function getDate() from date.js
+const date = require(__dirname + "/date.js");
 const app = express();
 
 let items = [];
@@ -14,17 +18,9 @@ app.use(express.static("public"));
 //App.js : server
 //Send message to the browser when user accesses homepage with route "/"
 app.get("/", function(req,res){
-  let today = new Date();
-  let currentDay = today.getDay();
 
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  };
-
-  let day = today.toLocaleDateString("en-US", options);
-
+  let day = date.getDate();
+  //let day = date.getDay();
   res.render("list", {
     listTitle: day,
     newListItems: items
@@ -35,6 +31,7 @@ app.get("/", function(req,res){
 //Create new template at route "/work"
 //Get input item and rerender frontend to show input data
 app.get("/work",function(req,res){
+
   res.render("list",{listTitle: "Work List", newListItems: workItems});
 });
 
