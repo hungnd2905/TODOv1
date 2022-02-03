@@ -4,7 +4,6 @@
 
     express
     body-parser
-    nodemon
     ejs
 
 - Unix command terminal: 
